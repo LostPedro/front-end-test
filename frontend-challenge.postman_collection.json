@@ -1,0 +1,80 @@
+{
+	"info": {
+		"_postman_id": "2b9de0a6-8ac1-4b8c-a5aa-f0b939321c19",
+		"name": "frontend-challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"buyer_document\": \"12345678912\",\n  \"credit_card_holder_name\": \"JOAO S SAURO\",\n  \"credit_card_number\": \"4111111111111111\",\n  \"credit_card_expiration_date\": \"0121\",\n  \"credit_card_cvv\": \"123\",\n  \"amount\": 10000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions"
+					]
+				},
+				"description": "add a new transaction"
+			},
+			"response": []
+		},
+		{
+			"name": "get transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions"
+					]
+				},
+				"description": "get all transactions"
+			},
+			"response": []
+		},
+		{
+			"name": "get transaction by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/transactions/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions",
+						"1"
+					]
+				},
+				"description": "get a transaction by id"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

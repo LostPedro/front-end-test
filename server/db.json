@@ -1,0 +1,63 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "buyer_document": "12345678912",
+      "credit_card_holder_name": "JOAO S SAURO",
+      "credit_card_number": "4111111111111111",
+      "credit_card_expiration_date": "0121",
+      "credit_card_cvv": "123",
+      "amount": 10000
+    },
+    {
+      "buyer_document": "12345678912",
+      "credit_card_holder_name": "JOAO S SAURO",
+      "credit_card_number": "4111111111111111",
+      "credit_card_expiration_date": "0121",
+      "credit_card_cvv": "123",
+      "amount": 10000,
+      "status": "refused",
+      "id": 2
+    },
+    {
+      "buyer_document": "12345678912",
+      "credit_card_holder_name": "JOAO S SAURO",
+      "credit_card_number": "4111111111111111",
+      "credit_card_expiration_date": "0121",
+      "credit_card_cvv": "123",
+      "amount": 10000,
+      "status": "refused",
+      "id": 3
+    },
+    {
+      "buyer_document": "12345678912",
+      "credit_card_holder_name": "JOAO S SAURO",
+      "credit_card_number": "4111111111111111",
+      "credit_card_expiration_date": "0121",
+      "credit_card_cvv": "123",
+      "amount": 10000,
+      "status": "paid",
+      "id": 4
+    },
+    {
+      "buyer_document": "12345678912",
+      "credit_card_holder_name": "JOAO S SAURO",
+      "credit_card_number": "4111111111111111",
+      "credit_card_expiration_date": "0121",
+      "credit_card_cvv": "123",
+      "amount": 10000,
+      "status": "paid",
+      "id": 5
+    },
+    {
+      "buyer_document": "12345678912",
+      "credit_card_holder_name": "JOAO S SAURO",
+      "credit_card_number": "4111111111111111",
+      "credit_card_expiration_date": "0121",
+      "credit_card_cvv": "123",
+      "amount": 10000,
+      "status": "refused",
+      "id": 6
+    }
+  ]
+}
