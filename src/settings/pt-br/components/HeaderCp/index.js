@@ -1,3 +1,3 @@
 export const HeaderCp = {
-  title: "HeaderCp",
-};
+  title: 'HeaderCp'
+}

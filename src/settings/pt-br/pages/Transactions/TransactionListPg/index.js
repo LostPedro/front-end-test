@@ -1,3 +1,3 @@
 export const TransactionListPg = {
-  title: "TransactionListPg",
-};
+  title: 'TransactionListPg'
+}

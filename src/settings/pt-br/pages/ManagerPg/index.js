@@ -1,3 +1,3 @@
 export const ManagerPg = {
-  title: "ManagerPg",
-};
+  title: 'ManagerPg'
+}

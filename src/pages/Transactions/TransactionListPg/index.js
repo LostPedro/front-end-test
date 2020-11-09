@@ -1,18 +1,18 @@
-import React from "react";
-import { SETTINGS, IMAGES, KEYS } from "../../../settings";
+import React from 'react'
+import {SETTINGS} from '../../../settings'
 
-import "./style.less";
+import './style.less'
 
 class TransactionListPg extends React.Component {
-  _pageName = "transaction-list-page";
+  _pageName = 'transaction-list-page'
   // -------------------------------------------------------------------------//
   // Component Lifecycle
   // -------------------------------------------------------------------------//
 
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.state = {};
+    this.state = {}
   }
 
   // -------------------------------------------------------------------------//
@@ -34,12 +34,12 @@ class TransactionListPg extends React.Component {
   render() {
     return (
       <div className={this._pageName}>{SETTINGS.TransactionListPg.title}</div>
-    );
+    )
   }
 }
 
-TransactionListPg.propTypes = {};
+TransactionListPg.propTypes = {}
 
-TransactionListPg.defaultProps = {};
+TransactionListPg.defaultProps = {}
 
-export default TransactionListPg;
+export default TransactionListPg

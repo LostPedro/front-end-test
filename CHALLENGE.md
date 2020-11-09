@@ -81,14 +81,14 @@ Esta rota retorna os dados informados adicionando o campo `status`, que para cri
 
 ```json
 {
-    "buyer_document": "12345678912",
-    "credit_card_holder_name": "JOAO S SAURO",
-    "credit_card_number": "4111111111111111",
-    "credit_card_expiration_date": "0121",
-    "credit_card_cvv": "123",
-    "amount": 10000,
-    "status": "paid",
-    "id": 6
+  "buyer_document": "12345678912",
+  "credit_card_holder_name": "JOAO S SAURO",
+  "credit_card_number": "4111111111111111",
+  "credit_card_expiration_date": "0121",
+  "credit_card_cvv": "123",
+  "amount": 10000,
+  "status": "paid",
+  "id": 6
 }
 ```
 

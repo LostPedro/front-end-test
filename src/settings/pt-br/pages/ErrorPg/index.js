@@ -1,3 +1,3 @@
 export const ErrorPg = {
-  title: "ErrorPg",
-};
+  title: 'ErrorPg'
+}

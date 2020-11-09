@@ -1,3 +1,3 @@
 export const InputCp = {
-  title: "InputCp",
-};
+  title: 'InputCp'
+}

@@ -1,3 +1,3 @@
 export const NewTransactionPg = {
-  title: "NewTransactionPg",
-};
+  title: 'NewTransactionPg'
+}

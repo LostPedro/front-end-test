@@ -1,3 +1,3 @@
 export const FormCp = {
-  title: "FormCp",
-};
+  title: 'FormCp'
+}
