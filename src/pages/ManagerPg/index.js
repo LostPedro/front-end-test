@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./style.less";
 
-import App from "../App";
+import TransactionsListPg from "../Transactions/TransactionListPg";
 
 class ManagerPg extends React.Component {
-  _pageName = "router-page";
+  _pageName = "manager-page";
 
   constructor(props) {
     super(props);
@@ -63,9 +63,9 @@ class ManagerPg extends React.Component {
           this.route = input;
         }}
       >
-        <div>
+        <div className={`${this._pageName}`}>
           <Switch>
-            <Route exact path="/" component={App} />
+            <Route exact path="/" component={TransactionsListPg} />
           </Switch>
         </div>
       </Router>
