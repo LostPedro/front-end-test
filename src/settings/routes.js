@@ -6,7 +6,7 @@ export const ROUTES = {
   routeUrl: devUrl,
   routeApi,
   transaction: {
-    getAllTransactions: {
+    getTransactionList: {
       url: "transactions",
       type: "get",
     },
@@ -14,7 +14,7 @@ export const ROUTES = {
       url: (id) => `transactions/${id}`,
       type: "get",
     },
-    postTransactions: {
+    postTransaction: {
       url: "transactions",
       type: "post",
     },
