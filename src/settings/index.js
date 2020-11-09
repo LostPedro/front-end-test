@@ -1,3 +1,4 @@
+export * from "./routes";
 export const SETTINGS =
   localStorage.getItem("front-end-test-lang") === "pt-br"
     ? require("./pt-br")
