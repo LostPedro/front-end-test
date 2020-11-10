@@ -1,9 +1,11 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {KEYS} from '../../settings'
 
 import './style.less'
 
 import TransactionsListPg from '../Transactions/TransactionListPg'
+import NewTransactionPg from '../Transactions/NewTransactionPg'
 
 class ManagerPg extends React.Component {
   _pageName = 'manager-page'
@@ -64,7 +66,16 @@ class ManagerPg extends React.Component {
         }}>
         <div className={`${this._pageName}`}>
           <Switch>
-            <Route exact path="/" component={TransactionsListPg} />
+            <Route
+              exact
+              path={KEYS.pageKeys.transactionList}
+              component={TransactionsListPg}
+            />
+            <Route
+              exact
+              path={KEYS.pageKeys.newTransaction}
+              component={NewTransactionPg}
+            />
           </Switch>
         </div>
       </Router>

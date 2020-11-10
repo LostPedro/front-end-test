@@ -4,7 +4,7 @@ import moment from 'moment'
 import t from 'typy'
 import {TransactionListItemCp} from '../../../components/TransactionListItemCp'
 import {ButtonCp} from '../../../components/ButtonCp'
-import {SETTINGS, IMAGES} from '../../../settings'
+import {SETTINGS, IMAGES, KEYS} from '../../../settings'
 import {applyPriceMask} from '../../../utils'
 import {getTransactionList} from '../../../services'
 
@@ -68,7 +68,11 @@ class TransactionListPg extends React.Component {
   // -------------------------------------------------------------------------//
 
   onClickAddButton = () => {
-    console.log('Apertei')
+    const {history} = this.props
+
+    history.push({
+      pathname: `${KEYS.pageKeys.newTransaction}`
+    })
   }
 
   // -------------------------------------------------------------------------//
