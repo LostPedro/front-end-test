@@ -1,4 +1,5 @@
 import React from 'react'
+import {TransactionListItemCp} from '../../../components/TransactionListItemCp'
 import {SETTINGS} from '../../../settings'
 import {applyPriceMask} from '../../../utils'
 
@@ -66,25 +67,15 @@ class TransactionListPg extends React.Component {
   renderList = () => {
     return (
       <div className={`${this._pageName}-list`}>
-        {this.renderListItem()}
+        <TransactionListItemCp
+          name="João S Silva"
+          date="10/10/2010 10:30"
+          moneyAmount={SETTINGS.TransactionListPg.header.currency(
+            applyPriceMask(0)
+          )}
+          status="Paga"
+        />
         <div className={`${this._pageName}-line`} />
-      </div>
-    )
-  }
-
-  renderListItem = () => {
-    return (
-      <div className={`${this._pageName}-item-wrapper`}>
-        <div className={`${this._pageName}-item-text-line`}>
-          <span className={`${this._pageName}-name`}>João S Silva</span>
-          <span className={`${this._pageName}-status`}>Paga</span>
-        </div>
-        <div
-          style={{marginTop: '8px'}}
-          className={`${this._pageName}-item-text-line`}>
-          <span className={`${this._pageName}-date`}>10/10/2010 10:30</span>
-          <span className={`${this._pageName}-money-amount`}>R$ 100,00</span>
-        </div>
       </div>
     )
   }

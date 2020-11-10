@@ -1,0 +1,44 @@
+@import (reference) "../../styles/globalStyle.less";
+@componentName: ~"transaction-list-item-component";
+
+.@{componentName}{
+    display: flex;
+    flex-direction: column;      
+    padding: 15px 16px;
+
+    .@{componentName}-item-text-line{
+      display: flex;
+      flex-direction: row;        
+      justify-content: space-between;
+      align-items: center;        
+
+      .@{componentName}-name{ 
+        color: @cListItemNameTxt;         
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 24px;
+      }
+      .@{componentName}-status{
+        color: @cListItemStatusTxt;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 24px;          
+      }
+      .@{componentName}-date{
+        color: @cListItemDateTxt;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+      }
+      .@{componentName}-money-amount{
+        color: @cListItemAmountTxt;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 24px;          
+      }
+
+    }
+  }
