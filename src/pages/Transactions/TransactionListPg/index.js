@@ -4,7 +4,7 @@ import moment from 'moment'
 import t from 'typy'
 import {TransactionListItemCp} from '../../../components/TransactionListItemCp'
 import {ButtonCp} from '../../../components/ButtonCp'
-import {SETTINGS} from '../../../settings'
+import {SETTINGS, IMAGES} from '../../../settings'
 import {applyPriceMask} from '../../../utils'
 import {getTransactionList} from '../../../services'
 
@@ -148,6 +148,13 @@ class TransactionListPg extends React.Component {
           <ButtonCp
             onClick={this.onClickAddButton}
             buttonLabel={SETTINGS.TransactionListPg.addButtonLabel}
+            icon={
+              <img
+                className={`${this._pageName}-add-icon`}
+                src={IMAGES.icons.plus}
+                alt={SETTINGS.TransactionListPg.plusIcon}
+              />
+            }
           />
         </div>
       </div>

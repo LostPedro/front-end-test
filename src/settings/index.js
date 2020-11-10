@@ -1,4 +1,5 @@
 export * from './routes'
+export * from './images'
 
 export const SETTINGS =
   localStorage.getItem('front-end-test-lang') === 'pt-br'

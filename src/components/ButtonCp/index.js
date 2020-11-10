@@ -2,7 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './style.less'
 
-export const ButtonCp = ({_componentName, buttonLabel, onClick, disabled}) => {
+export const ButtonCp = ({
+  _componentName,
+  buttonLabel,
+  onClick,
+  disabled,
+  icon
+}) => {
   // -------------------------------------------------------------------------//
   // Hooks
   // -------------------------------------------------------------------------//
@@ -33,6 +39,7 @@ export const ButtonCp = ({_componentName, buttonLabel, onClick, disabled}) => {
       className={disabled ? `${_componentName}-disabled` : _componentName}
       onClick={() => onClick()}
       type="button">
+      {icon}
       {buttonLabel}
     </button>
   )
@@ -43,12 +50,14 @@ ButtonCp.propTypes = {
   _componentName: PropTypes.string,
   disabled: PropTypes.bool,
   buttonLabel: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  icon: PropTypes.element
 }
 
 ButtonCp.defaultProps = {
   _componentName: 'button-component',
   disabled: false,
   buttonLabel: PropTypes.string,
-  onClick: () => {}
+  onClick: () => {},
+  icon: <div />
 }

@@ -11,5 +11,6 @@ export const TransactionListPg = {
       '': '-'
     }
   },
-  addButtonLabel: 'Criar transação'
+  addButtonLabel: 'Criar transação',
+  plusIcon: 'Adicionar'
 }
