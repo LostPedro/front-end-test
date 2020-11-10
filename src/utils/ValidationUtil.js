@@ -1,5 +1,7 @@
+import moment from 'moment'
+
 export const nameSurnameValidate = (value) => {
-  let re = /^([a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.'-]+)(\s+[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.'-]+){1,}$/
+  const re = /^([a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.'-]+)(\s+[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.'-]+){1,}$/
   return re.test(String(value))
 }
 
@@ -23,13 +25,13 @@ export const cpfValidate = (cpf) => {
     return false
   // Valida 1o digito
   let add = 0
-  for (let i = 0; i < 9; i++) add += parseInt(cpf.charAt(i), 10) * (10 - i)
+  for (let i = 0; i < 9; i += 1) add += parseInt(cpf.charAt(i), 10) * (10 - i)
   let rev = 11 - (add % 11)
   if (rev === 10 || rev === 11) rev = 0
   if (rev !== parseInt(cpf.charAt(9), 10)) return false
   // Valida 2o digito
   add = 0
-  for (let i = 0; i < 10; i++) add += parseInt(cpf.charAt(i), 10) * (11 - i)
+  for (let i = 0; i < 10; i += 1) add += parseInt(cpf.charAt(i), 10) * (11 - i)
   rev = 11 - (add % 11)
   if (rev === 10 || rev === 11) rev = 0
   if (rev !== parseInt(cpf.charAt(10), 10)) return false
@@ -37,30 +39,27 @@ export const cpfValidate = (cpf) => {
 }
 
 export const creditCardValidate = (value) => {
-  let re = /\d{4}\.\d{4}\.\d{4}\.\d{4}$/
+  const re = /\d{4}\.\d{4}\.\d{4}\.\d{4}$/
   return re.test(String(value))
 }
 
 export const expireDateValidate = (value) => {
-  let re = /\d{2}\/\d{4}$/
-  let today = moment()
+  const re = /\d{2}\/\d{4}$/
+  const today = moment()
   if (re.test(String(value))) {
-    let date = moment(value, 'MM-YYYY')
+    const date = moment(value, 'MM-YYYY')
     if (moment(date).isValid) {
       if (moment(date).isBefore(today, 'month')) {
         return false
-      } else {
-        return true
       }
-    } else {
-      return false
+      return true
     }
-  } else {
     return false
   }
+  return false
 }
 
 export const cvvValidate = (value) => {
-  let re = /^[0-9]{3,4}$/
+  const re = /^[0-9]{3,4}$/
   return re.test(String(value))
 }

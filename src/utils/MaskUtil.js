@@ -1,8 +1,8 @@
 import StringMask from 'string-mask'
 
 export const applyCpfMask = (value) => {
-  let max = 12
-  let cnpjMask = new StringMask('###.###.###-##')
+  const max = 12
+  const cnpjMask = new StringMask('###.###.###-##')
 
   if (value) {
     value = value.replace(/\D/g, '')
@@ -17,8 +17,8 @@ export const applyCpfMask = (value) => {
 }
 
 export const cardMask = (value) => {
-  let max = 16
-  let mask = new StringMask('#### #### #### ####')
+  const max = 16
+  const mask = new StringMask('#### #### #### ####')
 
   if (value) {
     value = value.replace(/\D/g, '')
@@ -33,8 +33,8 @@ export const cardMask = (value) => {
 }
 
 export const expireDateMask = (value) => {
-  let max = 6
-  let expireDateMask = new StringMask('##/####')
+  const max = 6
+  const mask = new StringMask('##/####')
 
   if (value) {
     value = value.replace(/\D/g, '')
@@ -43,7 +43,7 @@ export const expireDateMask = (value) => {
       value = value.substr(0, value.length - 1)
     }
 
-    return expireDateMask.apply(value)
+    return mask.apply(value)
   }
   return value
 }

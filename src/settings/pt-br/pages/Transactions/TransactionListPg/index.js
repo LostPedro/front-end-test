@@ -1,4 +1,7 @@
 export const TransactionListPg = {
-  transactionLabel: 'Número de transações',
-  totalValueLabel: 'Valor total'
+  header: {
+    transactionLabel: 'Número de transações',
+    totalValueLabel: 'Valor total',
+    currency: (value) => `R$ ${value}`
+  }
 }

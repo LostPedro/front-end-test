@@ -1,5 +1,6 @@
 import React from 'react'
 import {SETTINGS} from '../../../settings'
+import {applyPriceMask} from '../../../utils'
 
 import './style.less'
 
@@ -12,7 +13,10 @@ class TransactionListPg extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {}
+    this.state = {
+      totalTransactionValue: 0,
+      transactionCount: 0
+    }
   }
 
   // -------------------------------------------------------------------------//
@@ -31,9 +35,9 @@ class TransactionListPg extends React.Component {
   // Render
   // -------------------------------------------------------------------------//
 
-  renderHeaderItem = (label, info) => {
+  renderHeaderItem = (label, info, style) => {
     return (
-      <div className={`${this._pageName}-header-item`}>
+      <div style={style} className={`${this._pageName}-header-item`}>
         <span className={`${this._pageName}-header-item-label`}>{label}</span>
         <span className={`${this._pageName}-header-item-info`}>{info}</span>
       </div>
@@ -41,16 +45,20 @@ class TransactionListPg extends React.Component {
   }
 
   render() {
+    const {transactionCount, totalTransactionValue} = this.state
     return (
       <div className={this._pageName}>
         <div className={`${this._pageName}-header`}>
           {this.renderHeaderItem(
-            SETTINGS.TransactionListPg.transactionLabel,
-            '0000'
+            SETTINGS.TransactionListPg.header.transactionLabel,
+            transactionCount
           )}
           {this.renderHeaderItem(
-            SETTINGS.TransactionListPg.totalValueLabel,
-            '0000'
+            SETTINGS.TransactionListPg.header.totalValueLabel,
+            SETTINGS.TransactionListPg.header.currency(
+              applyPriceMask(totalTransactionValue)
+            ),
+            {marginTop: 24}
           )}
         </div>
       </div>
