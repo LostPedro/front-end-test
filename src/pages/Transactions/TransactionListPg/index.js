@@ -33,9 +33,9 @@ class TransactionListPg extends React.Component {
 
   renderHeaderItem = (label, info) => {
     return (
-      <div className={`${this._pageName}-item`}>
-        <span className={`${this._pageName}-label`}>{label}</span>
-        <span className={`${this._pageName}-info`}>{info}</span>
+      <div className={`${this._pageName}-header-item`}>
+        <span className={`${this._pageName}-header-item-label`}>{label}</span>
+        <span className={`${this._pageName}-header-item-info`}>{info}</span>
       </div>
     )
   }
