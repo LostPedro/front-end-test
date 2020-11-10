@@ -3,6 +3,7 @@ import {message} from 'antd'
 import moment from 'moment'
 import t from 'typy'
 import {TransactionListItemCp} from '../../../components/TransactionListItemCp'
+import {ButtonCp} from '../../../components/ButtonCp'
 import {SETTINGS} from '../../../settings'
 import {applyPriceMask} from '../../../utils'
 import {getTransactionList} from '../../../services'
@@ -116,23 +117,23 @@ class TransactionListPg extends React.Component {
       <div className={`${this._pageName}-list`}>
         {t(transactionsArray).safeArray.map((item, i) => {
           return (
-            <TransactionListItemCp
-              key={String(i)}
-              name={t(item, 'credit_card_holder_name').safeString}
-              date={moment(today).format('DD/MM/YYYY  HH:mm')}
-              moneyAmount={SETTINGS.TransactionListPg.currency(
-                applyPriceMask(t(item, 'amount').safeNumber)
-              )}
-              status={
-                SETTINGS.TransactionListPg.list.status[
-                  t(item, 'status').safeString
-                ]
-              }
-            />
+            <React.Fragment key={String(i)}>
+              <TransactionListItemCp
+                name={t(item, 'credit_card_holder_name').safeString}
+                date={moment(today).format('DD/MM/YYYY  HH:mm')}
+                moneyAmount={SETTINGS.TransactionListPg.currency(
+                  applyPriceMask(t(item, 'amount').safeNumber)
+                )}
+                status={
+                  SETTINGS.TransactionListPg.list.status[
+                    t(item, 'status').safeString
+                  ]
+                }
+              />
+              <div className={`${this._pageName}-line`} />
+            </React.Fragment>
           )
         })}
-
-        <div className={`${this._pageName}-line`} />
       </div>
     )
   }
@@ -144,12 +145,10 @@ class TransactionListPg extends React.Component {
         <div className={`${this._pageName}-line`} />
         {this.renderList()}
         <div className={`${this._pageName}-add-button-wrapper`}>
-          <button
-            className={`${this._pageName}-add-button`}
+          <ButtonCp
             onClick={this.onClickAddButton}
-            type="button">
-            {SETTINGS.TransactionListPg.addButtonLabel}
-          </button>
+            buttonLabel={SETTINGS.TransactionListPg.addButtonLabel}
+          />
         </div>
       </div>
     )
