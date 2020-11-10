@@ -5,9 +5,10 @@
   background-color: white;
   min-height: 100vh;
   user-select: none;
-  width: 100%;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
+  font-family: Lato;
 
   .@{pageName}-header {
     max-width: 100%;
@@ -21,8 +22,7 @@
       flex-direction: column;      
 
       .@{pageName}-header-item-label{
-        color: @cHeaderItemLabel;
-        font-family: Lato;
+        color: @cHeaderItemLabel;        
         font-style: normal;
         font-weight: bold;
         font-size: 14px;
@@ -31,7 +31,6 @@
 
       .@{pageName}-header-item-info{
         color: @cHeaderItemInfo;
-        font-family: Lato;
         font-style: normal;
         font-weight: bold;
         font-size: 20px;
@@ -44,5 +43,53 @@
     height: 1px;
     width: 100%;
     background: @cLine;
+  }
+  
+  .@{pageName}-list{    
+    display: flex;
+    flex-direction: column;
+    width: 100%;  
+
+    .@{pageName}-item-wrapper{
+      display: flex;
+      flex-direction: column;      
+      padding: 15px 16px;
+
+      .@{pageName}-item-text-line{
+        display: flex;
+        flex-direction: row;        
+        justify-content: space-between;
+        align-items: center;        
+
+        .@{pageName}-name{ 
+          color: @cListItemNameTxt;         
+          font-style: normal;
+          font-weight: bold;
+          font-size: 16px;
+          line-height: 24px;
+        }
+        .@{pageName}-status{
+          color: @cListItemStatusTxt;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 24px;          
+        }
+        .@{pageName}-date{
+          color: @cListItemDateTxt;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 24px;
+        }
+        .@{pageName}-money-amount{
+          color: @cListItemAmountTxt;
+          font-weight: bold;
+          font-size: 16px;
+          line-height: 24px;          
+        }
+
+      }
+    }
   }
 }

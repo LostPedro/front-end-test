@@ -48,7 +48,7 @@ class TransactionListPg extends React.Component {
           SETTINGS.TransactionListPg.header.currency(
             applyPriceMask(totalTransactionValue)
           ),
-          {marginTop: 24}
+          {marginTop: '24px'}
         )}
       </div>
     )
@@ -75,11 +75,13 @@ class TransactionListPg extends React.Component {
   renderListItem = () => {
     return (
       <div className={`${this._pageName}-item-wrapper`}>
-        <div className={`${this._pageName}-item-text-line-1`}>
+        <div className={`${this._pageName}-item-text-line`}>
           <span className={`${this._pageName}-name`}>João S Silva</span>
           <span className={`${this._pageName}-status`}>Paga</span>
         </div>
-        <div className={`${this._pageName}-item-text-line-2`}>
+        <div
+          style={{marginTop: '8px'}}
+          className={`${this._pageName}-item-text-line`}>
           <span className={`${this._pageName}-date`}>10/10/2010 10:30</span>
           <span className={`${this._pageName}-money-amount`}>R$ 100,00</span>
         </div>
