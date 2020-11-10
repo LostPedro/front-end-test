@@ -10,5 +10,6 @@ export const TransactionListPg = {
       refused: 'Recusada',
       '': '-'
     }
-  }
+  },
+  addButtonLabel: 'Criar transação'
 }

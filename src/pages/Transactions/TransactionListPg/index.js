@@ -66,6 +66,10 @@ class TransactionListPg extends React.Component {
   // Event Handlers
   // -------------------------------------------------------------------------//
 
+  onClickAddButton = () => {
+    console.log('Apertei')
+  }
+
   // -------------------------------------------------------------------------//
   // Other Functions
   // -------------------------------------------------------------------------//
@@ -139,6 +143,14 @@ class TransactionListPg extends React.Component {
         {this.renderHeader()}
         <div className={`${this._pageName}-line`} />
         {this.renderList()}
+        <div className={`${this._pageName}-add-button-wrapper`}>
+          <button
+            className={`${this._pageName}-add-button`}
+            onClick={this.onClickAddButton}
+            type="button">
+            {SETTINGS.TransactionListPg.addButtonLabel}
+          </button>
+        </div>
       </div>
     )
   }
