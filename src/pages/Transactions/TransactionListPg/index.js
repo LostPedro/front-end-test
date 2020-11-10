@@ -1,7 +1,10 @@
 import React from 'react'
+import {message} from 'antd'
+import t from 'typy'
 import {TransactionListItemCp} from '../../../components/TransactionListItemCp'
 import {SETTINGS} from '../../../settings'
 import {applyPriceMask} from '../../../utils'
+import {getTransactionList} from '../../../services'
 
 import './style.less'
 
@@ -16,14 +19,40 @@ class TransactionListPg extends React.Component {
 
     this.state = {
       totalTransactionValue: 0,
-      transactionCount: 0
+      transactionCount: 0,
+      loading: false
     }
+  }
+
+  componentDidMount() {
+    this.getTransactionListRequest()
   }
 
   // -------------------------------------------------------------------------//
   // Requests
   // -------------------------------------------------------------------------//
+  getTransactionListRequest = async () => {
+    const {loading} = this.state
+    this.setState({loading: true})
 
+    try {
+      const response = await getTransactionList()
+      if (response) {
+        this.setState(
+          {
+            loading: false
+          },
+          () => {
+            console.log('response', response)
+            console.log(loading)
+          }
+        )
+      }
+    } catch (e) {
+      message.error(t(e, 'message').safeString)
+      this.setState({loading: false})
+    }
+  }
   // -------------------------------------------------------------------------//
   // Event Handlers
   // -------------------------------------------------------------------------//
