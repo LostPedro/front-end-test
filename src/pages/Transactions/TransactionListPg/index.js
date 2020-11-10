@@ -1,5 +1,6 @@
 import React from 'react'
 import {message} from 'antd'
+import moment from 'moment'
 import t from 'typy'
 import {TransactionListItemCp} from '../../../components/TransactionListItemCp'
 import {SETTINGS} from '../../../settings'
@@ -18,6 +19,7 @@ class TransactionListPg extends React.Component {
     super(props)
 
     this.state = {
+      transactionsArray: [],
       totalTransactionValue: 0,
       transactionCount: 0,
       loading: false
@@ -38,9 +40,16 @@ class TransactionListPg extends React.Component {
     try {
       const response = await getTransactionList()
       if (response) {
+        let totalTransactionValue = 0
+        if (t(response).safeArray.length > 0) {
+          totalTransactionValue = this.calculateTotalTransactionValue(response)
+        }
         this.setState(
           {
-            loading: false
+            loading: false,
+            transactionsArray: response,
+            transactionCount: t(response).safeArray.length,
+            totalTransactionValue
           },
           () => {
             console.log('response', response)
@@ -60,7 +69,10 @@ class TransactionListPg extends React.Component {
   // -------------------------------------------------------------------------//
   // Other Functions
   // -------------------------------------------------------------------------//
-
+  calculateTotalTransactionValue = (array) => {
+    const total = array.reduce((acc, curr) => acc + curr.amount, 0)
+    return total
+  }
   // -------------------------------------------------------------------------//
   // Render
   // -------------------------------------------------------------------------//
@@ -75,7 +87,7 @@ class TransactionListPg extends React.Component {
         )}
         {this.renderHeaderItem(
           SETTINGS.TransactionListPg.header.totalValueLabel,
-          SETTINGS.TransactionListPg.header.currency(
+          SETTINGS.TransactionListPg.currency(
             applyPriceMask(totalTransactionValue)
           ),
           {marginTop: '24px'}
@@ -94,16 +106,28 @@ class TransactionListPg extends React.Component {
   }
 
   renderList = () => {
+    const {transactionsArray} = this.state
+    const today = moment()
     return (
       <div className={`${this._pageName}-list`}>
-        <TransactionListItemCp
-          name="João S Silva"
-          date="10/10/2010 10:30"
-          moneyAmount={SETTINGS.TransactionListPg.header.currency(
-            applyPriceMask(0)
-          )}
-          status="Paga"
-        />
+        {t(transactionsArray).safeArray.map((item, i) => {
+          return (
+            <TransactionListItemCp
+              key={String(i)}
+              name={t(item, 'credit_card_holder_name').safeString}
+              date={moment(today).format('DD/MM/YYYY  HH:mm')}
+              moneyAmount={SETTINGS.TransactionListPg.currency(
+                applyPriceMask(t(item, 'amount').safeNumber)
+              )}
+              status={
+                SETTINGS.TransactionListPg.list.status[
+                  t(item, 'status').safeString
+                ]
+              }
+            />
+          )
+        })}
+
         <div className={`${this._pageName}-line`} />
       </div>
     )
