@@ -31,9 +31,29 @@ class TransactionListPg extends React.Component {
   // Render
   // -------------------------------------------------------------------------//
 
+  renderHeaderItem = (label, info) => {
+    return (
+      <div className={`${this._pageName}-item`}>
+        <span className={`${this._pageName}-label`}>{label}</span>
+        <span className={`${this._pageName}-info`}>{info}</span>
+      </div>
+    )
+  }
+
   render() {
     return (
-      <div className={this._pageName}>{SETTINGS.TransactionListPg.title}</div>
+      <div className={this._pageName}>
+        <div className={`${this._pageName}-header`}>
+          {this.renderHeaderItem(
+            SETTINGS.TransactionListPg.transactionLabel,
+            '0000'
+          )}
+          {this.renderHeaderItem(
+            SETTINGS.TransactionListPg.totalValueLabel,
+            '0000'
+          )}
+        </div>
+      </div>
     )
   }
 }

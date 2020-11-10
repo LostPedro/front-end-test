@@ -8,4 +8,33 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  .@{pageName}-header {
+    width: 100%;
+    padding: 40px 20px 24px 20px;
+    background-color: @cHeaderBg;
+    display: flex;
+    flex-direction: column;
+
+    .@{pageName}-item{
+      display: flex;
+      flex-direction: column;
+
+      .@{pageName}-label{
+        color: @cHeaderItemLabel;        
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 24px;
+      }
+
+      .@{pageName}-info{
+        color: @cHeaderItemInfo;        
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 32px;
+      }
+    }
+  }
 }

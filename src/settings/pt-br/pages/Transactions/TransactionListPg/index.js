@@ -1,3 +1,4 @@
 export const TransactionListPg = {
-  title: 'TransactionListPg'
+  transactionLabel: 'Número de transações',
+  totalValueLabel: 'Valor total'
 }
