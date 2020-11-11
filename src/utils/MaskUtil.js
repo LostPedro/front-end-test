@@ -64,7 +64,7 @@ export const applyPriceMask = (value, prefix = '', suffix = '') => {
       priceMask = new StringMask('#.##0,00', {reverse: true})
     }
 
-    return prefix + (priceMask.apply(value) || 0) + suffix
+    return prefix + (priceMask.apply(value) || '0,00') + suffix
   }
   return prefix + value + suffix
 }

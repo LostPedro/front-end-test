@@ -11,7 +11,8 @@ import {
   expireDateValidate,
   cvvValidate,
   expireDateMask,
-  applyPriceMask
+  applyPriceMask,
+  removePriceMask
 } from '../../utils'
 
 const useSignUpForm = (callback) => {
@@ -136,8 +137,12 @@ const useSignUpForm = (callback) => {
       cvvErr = true
     }
 
-    if (t(inputs, 'transactionAmount').safeString) {
-      const amount = parseFloat(t(inputs, 'transactionAmount').safeString)
+    if (t(inputs, 'transactionAmount').safeString.length > 0) {
+      const amountString = removePriceMask(
+        t(inputs, 'transactionAmount').safeString
+      )
+
+      const amount = parseFloat(amountString.replace(/\D/g, ''))
       if (amount === 0) {
         setError((e) => ({
           ...e,
