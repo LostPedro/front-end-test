@@ -1,9 +1,12 @@
 import React from 'react'
+import {message} from 'antd'
+import t from 'typy'
 
 import {SETTINGS, IMAGES} from '../../../settings'
 
 import {NavHeaderCp} from '../../../components/NavHeaderCp'
 import {FormCp} from '../../../components/FormCp'
+import {postTransaction} from '../../../services'
 import './style.less'
 
 class NewTransactionPg extends React.Component {
@@ -15,7 +18,9 @@ class NewTransactionPg extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {}
+    this.state = {
+      loading: false
+    }
   }
 
   componentDidMount() {}
@@ -23,8 +28,27 @@ class NewTransactionPg extends React.Component {
   // -------------------------------------------------------------------------//
   // Requests
   // -------------------------------------------------------------------------//
-  postRequest = () => {
-    console.log('request')
+  postTransactionRequest = async (input) => {
+    const {loading} = this.state
+    this.setState({loading: true})
+
+    try {
+      const response = await postTransaction(input)
+      if (response) {
+        this.setState(
+          {
+            loading: false
+          },
+          () => {
+            console.log('response', response)
+            console.log(loading)
+          }
+        )
+      }
+    } catch (e) {
+      message.error(t(e, 'message').safeString)
+      this.setState({loading: false})
+    }
   }
 
   // -------------------------------------------------------------------------//
@@ -57,7 +81,7 @@ class NewTransactionPg extends React.Component {
           }
         />
         <div className={`${this._pageName}-form-container`}>
-          <FormCp postRequest={this.postRequest} />
+          <FormCp postRequest={this.postTransactionRequest} />
         </div>
       </div>
     )

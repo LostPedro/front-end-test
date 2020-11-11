@@ -9,7 +9,7 @@ import {InputCp} from '../InputCp'
 
 export const FormCp = ({
   _componentName,
-  postUsersRequest,
+  postRequest,
   sendButtonText,
   requiredLabel,
   placeholder
@@ -43,7 +43,7 @@ export const FormCp = ({
   // -------------------------------------------------------------------------//
   const sendForm = (input) => {
     console.log('input', input)
-    postUsersRequest(input)
+    postRequest(input)
   }
 
   // -------------------------------------------------------------------------//
@@ -125,7 +125,7 @@ export const FormCp = ({
 // Component props and default prop values
 FormCp.propTypes = {
   _componentName: PropTypes.string,
-  postUsersRequest: PropTypes.func,
+  postRequest: PropTypes.func,
   sendButtonText: PropTypes.string,
   requiredLabel: PropTypes.string,
   placeholder: PropTypes.shape({
@@ -140,7 +140,7 @@ FormCp.propTypes = {
 
 FormCp.defaultProps = {
   _componentName: 'form-component',
-  postUsersRequest: () => {},
+  postRequest: () => {},
   sendButtonText: SETTINGS.FormCp.registerButtonLabel,
   requiredLabel: SETTINGS.FormCp.requiredLabel,
   placeholder: {
