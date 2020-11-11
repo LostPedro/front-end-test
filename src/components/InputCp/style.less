@@ -1,0 +1,28 @@
+@componentName: ~'input-component';
+@import (reference) '../../styles/globalStyle';
+
+.@{componentName}{	
+	display: flex;        
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;				
+
+	.@{componentName}-input{						
+		display: block;
+		min-width: 100%;
+		max-width: 100%;								
+		border: 1px solid #8B8B92;
+		box-sizing: border-box;
+		padding: 12px;
+		border-radius: 6px;					
+	}		
+	
+	.@{componentName}-error-text{	
+		width: 100%;				
+		color: red;
+		font-size: 10px;		
+		text-align: right;		
+		height: 16px;
+	}
+}

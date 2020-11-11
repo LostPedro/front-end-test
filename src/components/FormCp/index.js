@@ -5,6 +5,7 @@ import t from 'typy'
 import useSignUpForm from './customHooks'
 import {SETTINGS} from '../../settings'
 import {ButtonCp} from '../ButtonCp'
+import {InputCp} from '../InputCp'
 
 export const FormCp = ({
   _componentName,
@@ -16,18 +17,6 @@ export const FormCp = ({
   // -------------------------------------------------------------------------//
   // Hooks
   // -------------------------------------------------------------------------//
-  const sendForm = (input) => {
-    postUsersRequest(input)
-  }
-
-  const {
-    shake,
-    inputs,
-    handleInputChange,
-    handleSubmit,
-    buttonEnabled,
-    error
-  } = useSignUpForm(sendForm)
 
   // -------------------------------------------------------------------------//
   // Effects
@@ -48,40 +37,42 @@ export const FormCp = ({
       }
     }
   }, [])
+
   // -------------------------------------------------------------------------//
   // Event Handlers
   // -------------------------------------------------------------------------//
+  const sendForm = (input) => {
+    console.log('input', input)
+    postUsersRequest(input)
+  }
 
   // -------------------------------------------------------------------------//
   // Other functions
   // -------------------------------------------------------------------------//
+  const {
+    shake,
+    inputs,
+    handleInputChange,
+    handleSubmit,
+    buttonEnabled,
+    error
+  } = useSignUpForm(sendForm)
 
   // -------------------------------------------------------------------------//
   // Rendering
   // -------------------------------------------------------------------------//
-  const renderErrors = (err) => {
-    return <span className={`${_componentName}-error-text`}>{err}</span>
-  }
-
   const renderSingleInput = (inputName, wrapperStyle) => {
     return (
-      <div
-        style={wrapperStyle}
-        className={`${_componentName}-single-input-wrapper`}>
-        <input
-          className={`${_componentName}-input`}
-          type="text"
-          name={`${inputName}`}
-          placeholder={t(placeholder, `${inputName}`).safeString}
-          onChange={handleInputChange}
-          value={t(inputs, `${inputName}`).safeString}
-          required
-          style={{
-            borderColor: t(error, `${inputName}`).safeString ? 'red' : ''
-          }}
-        />
-        {renderErrors(t(error, `${inputName}`).safeString)}
-      </div>
+      <InputCp
+        wrapperStyle={wrapperStyle}
+        type="text"
+        name={`${inputName}`}
+        placeholder={t(placeholder, `${inputName}`).safeString}
+        onChange={handleInputChange}
+        value={t(inputs, `${inputName}`).safeString}
+        required
+        error={t(error, `${inputName}`).safeString}
+      />
     )
   }
 
