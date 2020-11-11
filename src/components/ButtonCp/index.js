@@ -7,7 +7,8 @@ export const ButtonCp = ({
   buttonLabel,
   onClick,
   disabled,
-  icon
+  icon,
+  type
 }) => {
   // -------------------------------------------------------------------------//
   // Hooks
@@ -38,7 +39,7 @@ export const ButtonCp = ({
       disabled={disabled}
       className={disabled ? `${_componentName}-disabled` : _componentName}
       onClick={() => onClick()}
-      type="button">
+      type={type}>
       {icon}
       {buttonLabel}
     </button>
@@ -51,7 +52,8 @@ ButtonCp.propTypes = {
   disabled: PropTypes.bool,
   buttonLabel: PropTypes.string,
   onClick: PropTypes.func,
-  icon: PropTypes.element
+  icon: PropTypes.element,
+  type: PropTypes.string
 }
 
 ButtonCp.defaultProps = {
@@ -59,5 +61,6 @@ ButtonCp.defaultProps = {
   disabled: false,
   buttonLabel: PropTypes.string,
   onClick: () => {},
-  icon: <div />
+  icon: <div />,
+  type: 'button'
 }

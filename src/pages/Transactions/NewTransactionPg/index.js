@@ -76,6 +76,7 @@ class NewTransactionPg extends React.Component {
             disabled={disableBtn}
             onClick={this.onClickRegisterButton}
             buttonLabel={SETTINGS.NewTransactionPg.registerButtonLabel}
+            type="submit"
           />
         </div>
       </div>
