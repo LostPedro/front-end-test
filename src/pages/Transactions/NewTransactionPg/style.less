@@ -4,8 +4,8 @@
 .@{pageName} {
   background-color: white;
   min-height: 100vh;
-  user-select: none;
-  max-width: 100vw;
+  max-height: 10vh;
+  user-select: none;  
   display: flex;
   flex-direction: column;
   font-family: Lato;
@@ -13,5 +13,21 @@
   .@{pageName}-back-icon{
     height: 100%;
     width: 100%; 
+  }  
+
+  .@{pageName}-form-container{    
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 16px;
+    justify-content: center;    
+  }
+
+  .@{pageName}-register-button-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 15px 16px 32px 16px;
+    padding-bottom: 32px;          
   }  
 }
