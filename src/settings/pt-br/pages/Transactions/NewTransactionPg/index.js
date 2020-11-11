@@ -1,3 +1,4 @@
 export const NewTransactionPg = {
-  title: 'NewTransactionPg'
+  title: 'Nova transação',
+  backIcon: 'Botão voltar'
 }

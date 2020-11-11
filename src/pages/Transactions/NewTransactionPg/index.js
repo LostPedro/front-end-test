@@ -1,6 +1,8 @@
 import React from 'react'
 
-import {SETTINGS} from '../../../settings'
+import {SETTINGS, IMAGES} from '../../../settings'
+
+import {NavHeaderCp} from '../../../components/NavHeaderCp'
 
 import './style.less'
 
@@ -25,6 +27,10 @@ class NewTransactionPg extends React.Component {
   // -------------------------------------------------------------------------//
   // Event Handlers
   // -------------------------------------------------------------------------//
+  onClickGoBack = () => {
+    const {history} = this.props
+    history.goBack()
+  }
 
   // -------------------------------------------------------------------------//
   // Other Functions
@@ -35,7 +41,19 @@ class NewTransactionPg extends React.Component {
   // -------------------------------------------------------------------------//
   render() {
     return (
-      <div className={this._pageName}>{SETTINGS.NewTransactionPg.title}</div>
+      <div className={this._pageName}>
+        <NavHeaderCp
+          title={SETTINGS.NewTransactionPg.title}
+          onClickLeft={this.onClickGoBack}
+          leftIcon={
+            <img
+              className={`${this._pageName}-back-icon`}
+              src={IMAGES.icons.backArrow}
+              alt={SETTINGS.NewTransactionPg.backIcon}
+            />
+          }
+        />
+      </div>
     )
   }
 }

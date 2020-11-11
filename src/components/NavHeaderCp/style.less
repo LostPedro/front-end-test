@@ -1,0 +1,26 @@
+@import (reference) "../../styles/globalStyle.less";
+@componentName: ~"nav-header-component";
+
+.@{componentName}{
+    max-width: 100%;
+    padding: 40px 16px 16px 20px;
+    background-color: @cHeaderBg;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;    
+
+    .@{componentName}-nav-header-title{
+      color: @cHeaderTitle;
+      font-family: Lato;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 24px;
+    }
+    
+    .@{componentName}-nav-icon-wrapper{
+        height: 15.56px;
+        width: 16px; 
+    }
+}
