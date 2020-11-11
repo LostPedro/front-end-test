@@ -7,10 +7,13 @@ import {ButtonCp} from '../../../components/ButtonCp'
 import {SETTINGS, IMAGES, KEYS} from '../../../settings'
 import {applyPriceMask} from '../../../utils'
 import {getTransactionList} from '../../../services'
+import TransactionContext from '../../../context/transactionContext'
 
 import './style.less'
 
 class TransactionListPg extends React.Component {
+  static contextType = TransactionContext
+
   _pageName = 'transaction-list-page'
   // -------------------------------------------------------------------------//
   // Component Lifecycle
@@ -20,9 +23,6 @@ class TransactionListPg extends React.Component {
     super(props)
 
     this.state = {
-      transactionsArray: [],
-      totalTransactionValue: 0,
-      transactionCount: 0,
       loading: false
     }
   }
@@ -36,6 +36,8 @@ class TransactionListPg extends React.Component {
   // -------------------------------------------------------------------------//
   getTransactionListRequest = async () => {
     const {loading} = this.state
+    const {setTransaction} = this.context
+
     this.setState({loading: true})
 
     try {
@@ -45,15 +47,18 @@ class TransactionListPg extends React.Component {
         if (t(response).safeArray.length > 0) {
           totalTransactionValue = this.calculateTotalTransactionValue(response)
         }
+
+        const newTransaction = {
+          list: response,
+          totalAmount: totalTransactionValue,
+          count: t(response).safeArray.length
+        }
+        setTransaction(newTransaction)
         this.setState(
           {
-            loading: false,
-            transactionsArray: response,
-            transactionCount: t(response).safeArray.length,
-            totalTransactionValue
+            loading: false
           },
           () => {
-            console.log('response', response)
             console.log(loading)
           }
         )
@@ -87,17 +92,17 @@ class TransactionListPg extends React.Component {
   // -------------------------------------------------------------------------//
 
   renderHeader = () => {
-    const {transactionCount, totalTransactionValue} = this.state
+    const {transaction} = this.context
     return (
       <div className={`${this._pageName}-header`}>
         {this.renderHeaderItem(
           SETTINGS.TransactionListPg.header.transactionLabel,
-          transactionCount
+          transaction.count
         )}
         {this.renderHeaderItem(
           SETTINGS.TransactionListPg.header.totalValueLabel,
           SETTINGS.TransactionListPg.currency(
-            applyPriceMask(totalTransactionValue)
+            applyPriceMask(transaction.totalAmount)
           ),
           {marginTop: '24px'}
         )}
@@ -115,11 +120,12 @@ class TransactionListPg extends React.Component {
   }
 
   renderList = () => {
-    const {transactionsArray} = this.state
+    const {transaction} = this.context
+
     const today = moment()
     return (
       <div className={`${this._pageName}-list`}>
-        {t(transactionsArray).safeArray.map((item, i) => {
+        {t(transaction.list).safeArray.map((item, i) => {
           return (
             <React.Fragment key={String(i)}>
               <TransactionListItemCp

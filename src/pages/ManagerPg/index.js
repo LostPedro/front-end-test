@@ -1,7 +1,7 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import {KEYS} from '../../settings'
-
+import {TransactionProvider} from '../../context/transactionContext'
 import './style.less'
 
 import TransactionsListPg from '../Transactions/TransactionListPg'
@@ -64,20 +64,22 @@ class ManagerPg extends React.Component {
         ref={(input) => {
           this.route = input
         }}>
-        <div className={`${this._pageName}`}>
-          <Switch>
-            <Route
-              exact
-              path={KEYS.pageKeys.transactionList}
-              component={TransactionsListPg}
-            />
-            <Route
-              exact
-              path={KEYS.pageKeys.newTransaction}
-              component={NewTransactionPg}
-            />
-          </Switch>
-        </div>
+        <TransactionProvider>
+          <div className={`${this._pageName}`}>
+            <Switch>
+              <Route
+                exact
+                path={KEYS.pageKeys.transactionList}
+                component={TransactionsListPg}
+              />
+              <Route
+                exact
+                path={KEYS.pageKeys.newTransaction}
+                component={NewTransactionPg}
+              />
+            </Switch>
+          </div>
+        </TransactionProvider>
       </Router>
     )
   }

@@ -1,15 +1,17 @@
 import React from 'react'
 import {message} from 'antd'
 import t from 'typy'
-
 import {SETTINGS, IMAGES} from '../../../settings'
-
 import {NavHeaderCp} from '../../../components/NavHeaderCp'
 import {FormCp} from '../../../components/FormCp'
 import {postTransaction} from '../../../services'
+import TransactionContext from '../../../context/transactionContext'
+
 import './style.less'
 
 class NewTransactionPg extends React.Component {
+  static contextType = TransactionContext
+
   _pageName = 'new-transaction-page'
   // -------------------------------------------------------------------------//
   // Component Lifecycle
@@ -30,18 +32,34 @@ class NewTransactionPg extends React.Component {
   // -------------------------------------------------------------------------//
   postTransactionRequest = async (input) => {
     const {loading} = this.state
+    const {transaction, setTransaction} = this.context
     this.setState({loading: true})
 
     try {
       const response = await postTransaction(input)
       if (response) {
+        const transactionListArray = t(transaction, 'list').safeArray
+
+        transactionListArray.push(response)
+
+        const totalTransactionValue = this.calculateTotalTransactionValue(
+          transactionListArray
+        )
+
+        const newTransaction = {
+          list: transactionListArray,
+          totalAmount: totalTransactionValue,
+          count: t(transactionListArray).safeArray.length
+        }
+        setTransaction(newTransaction)
+
         this.setState(
           {
             loading: false
           },
           () => {
-            console.log('response', response)
-            console.log(loading)
+            console.log('loading', loading)
+            this.onClickGoBack()
           }
         )
       }
@@ -62,6 +80,10 @@ class NewTransactionPg extends React.Component {
   // -------------------------------------------------------------------------//
   // Other Functions
   // -------------------------------------------------------------------------//
+  calculateTotalTransactionValue = (array) => {
+    const total = array.reduce((acc, curr) => acc + curr.amount, 0)
+    return total
+  }
 
   // -------------------------------------------------------------------------//
   // Render

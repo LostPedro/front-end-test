@@ -58,6 +58,36 @@
       "amount": 10000,
       "status": "refused",
       "id": 6
+    },
+    {
+      "buyer_document": "04299658183",
+      "credit_card_holder_name": "Pedro de Oliveira Paiva e Souza",
+      "credit_card_number": "0000000000000000",
+      "credit_card_expiration_date": "0320",
+      "credit_card_cvv": "123",
+      "amount": 1000,
+      "status": "refused",
+      "id": 7
+    },
+    {
+      "buyer_document": "38092373027",
+      "credit_card_holder_name": "ALICE O P SOUZA",
+      "credit_card_number": "1234123412341234",
+      "credit_card_expiration_date": "1220",
+      "credit_card_cvv": "123",
+      "amount": 1200,
+      "status": "paid",
+      "id": 8
+    },
+    {
+      "buyer_document": "04299658183",
+      "credit_card_holder_name": "Teste Teste",
+      "credit_card_number": "0001232132132132",
+      "credit_card_expiration_date": "1220",
+      "credit_card_cvv": "123",
+      "amount": 2222,
+      "status": "paid",
+      "id": 9
     }
   ]
 }
