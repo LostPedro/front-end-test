@@ -210,7 +210,7 @@ const useSignUpForm = (callback) => {
       case 'transactionAmount':
         setInputs((input) => ({
           ...input,
-          [event.target.name]: applyPriceMask(event.target.value)
+          [event.target.name]: applyPriceMask(event.target.value, 'R$ ')
         }))
         break
       default:
