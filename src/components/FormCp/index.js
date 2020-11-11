@@ -11,7 +11,7 @@ export const FormCp = ({
   postUsersRequest,
   sendButtonText,
   requiredLabel,
-  namePlaceholder
+  placeholder
 }) => {
   // -------------------------------------------------------------------------//
   // Hooks
@@ -26,9 +26,12 @@ export const FormCp = ({
     handleInputChange,
     handleSubmit,
     buttonEnabled,
-    nameError
+    error
   } = useSignUpForm(sendForm)
 
+  // -------------------------------------------------------------------------//
+  // Effects
+  // -------------------------------------------------------------------------//
   useEffect(() => {
     const elements = document.getElementsByTagName('Input')
     if (t(elements).safeArray.length > 0) {
@@ -46,14 +49,6 @@ export const FormCp = ({
     }
   }, [])
   // -------------------------------------------------------------------------//
-  // Effects
-  // -------------------------------------------------------------------------//
-
-  // -------------------------------------------------------------------------//
-  // Requests
-  // -------------------------------------------------------------------------//
-
-  // -------------------------------------------------------------------------//
   // Event Handlers
   // -------------------------------------------------------------------------//
 
@@ -64,27 +59,50 @@ export const FormCp = ({
   // -------------------------------------------------------------------------//
   // Rendering
   // -------------------------------------------------------------------------//
-  const renderErrors = (error) => {
-    return <span className={`${_componentName}-error-text`}>{error}</span>
+  const renderErrors = (err) => {
+    return <span className={`${_componentName}-error-text`}>{err}</span>
   }
 
-  const renderInputs = () => {
+  const renderSingleInput = (inputName, wrapperStyle) => {
     return (
-      <div className={`${_componentName}-inputs-container`}>
-        <div className={`${_componentName}-input-wrapper`}>
-          <input
-            className={`${_componentName}-input`}
-            type="text"
-            name="name"
-            placeholder={namePlaceholder}
-            onChange={handleInputChange}
-            value={inputs.name}
-            required
-            style={{
-              borderColor: nameError ? 'red' : ''
-            }}
-          />
-          {renderErrors(nameError)}
+      <div
+        style={wrapperStyle}
+        className={`${_componentName}-single-input-wrapper`}>
+        <input
+          className={`${_componentName}-input`}
+          type="text"
+          name={`${inputName}`}
+          placeholder={t(placeholder, `${inputName}`).safeString}
+          onChange={handleInputChange}
+          value={t(inputs, `${inputName}`).safeString}
+          required
+          style={{
+            borderColor: t(error, `${inputName}`).safeString ? 'red' : ''
+          }}
+        />
+        {renderErrors(t(error, `${inputName}`).safeString)}
+      </div>
+    )
+  }
+
+  const renderAllInputs = () => {
+    return (
+      <div className={`${_componentName}-all-inputs-container`}>
+        <div className={`${_componentName}-input-container`}>
+          {renderSingleInput('name')}
+        </div>
+        <div className={`${_componentName}-input-container`}>
+          {renderSingleInput('cpf')}
+        </div>
+        <div className={`${_componentName}-input-container`}>
+          {renderSingleInput('cardNumber')}
+        </div>
+        <div className={`${_componentName}-input-container`}>
+          {renderSingleInput('expireDate', {width: '58.53%'})}
+          {renderSingleInput('cvv', {width: '39%'})}
+        </div>
+        <div className={`${_componentName}-input-container`}>
+          {renderSingleInput('transactionAmount')}
         </div>
       </div>
     )
@@ -106,8 +124,7 @@ export const FormCp = ({
   return (
     <div className={_componentName}>
       <form className={`${_componentName}-form`} onSubmit={handleSubmit}>
-        {renderInputs()}
-        {renderErrors()}
+        {renderAllInputs()}
         {renderButton()}
       </form>
     </div>
@@ -120,7 +137,14 @@ FormCp.propTypes = {
   postUsersRequest: PropTypes.func,
   sendButtonText: PropTypes.string,
   requiredLabel: PropTypes.string,
-  namePlaceholder: PropTypes.string
+  placeholder: PropTypes.shape({
+    name: PropTypes.string,
+    cpf: PropTypes.string,
+    cardNumber: PropTypes.string,
+    expireDate: PropTypes.string,
+    cvv: PropTypes.string,
+    transactionAmount: PropTypes.string
+  })
 }
 
 FormCp.defaultProps = {
@@ -128,5 +152,12 @@ FormCp.defaultProps = {
   postUsersRequest: () => {},
   sendButtonText: SETTINGS.FormCp.registerButtonLabel,
   requiredLabel: SETTINGS.FormCp.requiredLabel,
-  namePlaceholder: SETTINGS.FormCp.namePlaceholder
+  placeholder: {
+    name: SETTINGS.FormCp.placeholder.name,
+    cpf: SETTINGS.FormCp.placeholder.cpf,
+    cardNumber: SETTINGS.FormCp.placeholder.cardNumber,
+    expireDate: SETTINGS.FormCp.placeholder.expireDate,
+    cvv: SETTINGS.FormCp.placeholder.cvv,
+    transactionAmount: SETTINGS.FormCp.placeholder.transactionAmount
+  }
 }
