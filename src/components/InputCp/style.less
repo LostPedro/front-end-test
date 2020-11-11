@@ -7,22 +7,40 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;				
+	
+	/* initially label is below input */
+	label {
+		display: flex;
+		position: relative;		
+		align-self: flex-start;		
+		top: 28.5px;
+		left: 12px;
+		transition: all 150ms ease-in;
+		color: @cInputLabelTxt;
+		padding: 0px 4px;		
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		line-height: 16px;
+	}
+	
+	label.field-active {
+		transform:translate(1px, -20px);		
+		font-size: .9em;		
+		background-color: @cInputLabelTransformedBgColor;
+		text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 2px 0 0 #fff, -2px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff;
+	}
+	.floating-label {
+		-webkit-appearance: none !important;
+	}	
 
 	.@{componentName}-input{						
 		display: block;
 		min-width: 100%;
 		max-width: 100%;								
-		border: 1px solid #8B8B92;
+		border: 1px solid @cInputBorder;
 		box-sizing: border-box;
 		padding: 12px;
 		border-radius: 6px;					
-	}		
-	
-	.@{componentName}-error-text{	
-		width: 100%;				
-		color: red;
-		font-size: 10px;		
-		text-align: right;		
-		height: 16px;
-	}
+	}			
 }

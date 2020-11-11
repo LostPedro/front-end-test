@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import './style.less'
 
@@ -13,6 +13,8 @@ export const InputCp = ({
   onChange,
   required
 }) => {
+  const [fieldActive, setFieldActive] = useState(false)
+
   // -------------------------------------------------------------------------//
   // Hooks
   // -------------------------------------------------------------------------//
@@ -28,32 +30,47 @@ export const InputCp = ({
   // -------------------------------------------------------------------------//
   // Event Handlers
   // -------------------------------------------------------------------------//
+  const activateField = () => {
+    setFieldActive(true)
+  }
+
+  const disableFocus = (e) => {
+    if (e.target.value === '') {
+      setFieldActive(false)
+    }
+  }
 
   // -------------------------------------------------------------------------//
   // Other functions
   // -------------------------------------------------------------------------//
-  const renderErrors = (err) => {
-    return <span className={`${_componentName}-error-text`}>{err}</span>
-  }
+  // const renderErrors = (err) => {
+  //   return <span className={`${_componentName}-error-text`}>{err}</span>
+  // }
+
   // -------------------------------------------------------------------------//
   // Rendering
   // -------------------------------------------------------------------------//
 
   return (
     <div style={wrapperStyle} className={`${_componentName}`}>
+      <label htmlFor={name} className={fieldActive ? `field-active` : ''}>
+        {placeholder}
+      </label>
       <input
+        id={name}
         className={`${_componentName}-input`}
         type={type}
         name={name}
-        placeholder={placeholder}
         onChange={(e) => onChange(e)}
+        onFocus={activateField}
+        onBlur={disableFocus}
         value={value}
         required={required}
         style={{
           borderColor: error ? 'red' : ''
         }}
       />
-      {renderErrors(error)}
+      {/* {renderErrors(error)} */}
     </div>
   )
 }
