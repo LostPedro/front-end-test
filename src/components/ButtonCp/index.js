@@ -7,6 +7,7 @@ export const ButtonCp = ({
   buttonLabel,
   onClick,
   disabled,
+  shake,
   icon,
   type
 }) => {
@@ -36,10 +37,13 @@ export const ButtonCp = ({
 
   return (
     <button
+      style={{
+        animation: shake ? 'shake 0.82s cubic-bezier(.36,.07,.19,.97) both' : ''
+      }}
       disabled={disabled}
       className={disabled ? `${_componentName}-disabled` : _componentName}
-      onClick={() => onClick()}
-      type={type}>
+      onClick={onClick}
+      type={type === 'submit' ? 'submit' : 'button'}>
       {icon}
       {buttonLabel}
     </button>
@@ -50,6 +54,7 @@ export const ButtonCp = ({
 ButtonCp.propTypes = {
   _componentName: PropTypes.string,
   disabled: PropTypes.bool,
+  shake: PropTypes.bool,
   buttonLabel: PropTypes.string,
   onClick: PropTypes.func,
   icon: PropTypes.element,
@@ -59,6 +64,7 @@ ButtonCp.propTypes = {
 ButtonCp.defaultProps = {
   _componentName: 'button-component',
   disabled: false,
+  shake: false,
   buttonLabel: PropTypes.string,
   onClick: () => {},
   icon: <div />,

@@ -3,8 +3,7 @@ import React from 'react'
 import {SETTINGS, IMAGES} from '../../../settings'
 
 import {NavHeaderCp} from '../../../components/NavHeaderCp'
-import {ButtonCp} from '../../../components/ButtonCp'
-
+import {FormCp} from '../../../components/FormCp'
 import './style.less'
 
 class NewTransactionPg extends React.Component {
@@ -16,9 +15,7 @@ class NewTransactionPg extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      disableBtn: true
-    }
+    this.state = {}
   }
 
   componentDidMount() {}
@@ -26,16 +23,14 @@ class NewTransactionPg extends React.Component {
   // -------------------------------------------------------------------------//
   // Requests
   // -------------------------------------------------------------------------//
+  postRequest = () => {
+    console.log('request')
+  }
 
   // -------------------------------------------------------------------------//
   // Event Handlers
   // -------------------------------------------------------------------------//
   onClickGoBack = () => {
-    const {history} = this.props
-    history.goBack()
-  }
-
-  onClickRegisterButton = () => {
     const {history} = this.props
     history.goBack()
   }
@@ -47,16 +42,7 @@ class NewTransactionPg extends React.Component {
   // -------------------------------------------------------------------------//
   // Render
   // -------------------------------------------------------------------------//
-  renderForm = () => {
-    return (
-      <div className={`${this._pageName}-form-container`}>
-        <div />
-      </div>
-    )
-  }
-
   render() {
-    const {disableBtn} = this.state
     return (
       <div className={this._pageName}>
         <NavHeaderCp
@@ -70,14 +56,8 @@ class NewTransactionPg extends React.Component {
             />
           }
         />
-        {this.renderForm()}
-        <div className={`${this._pageName}-register-button-wrapper`}>
-          <ButtonCp
-            disabled={disableBtn}
-            onClick={this.onClickRegisterButton}
-            buttonLabel={SETTINGS.NewTransactionPg.registerButtonLabel}
-            type="submit"
-          />
+        <div className={`${this._pageName}-form-container`}>
+          <FormCp postRequest={this.postRequest} />
         </div>
       </div>
     )
