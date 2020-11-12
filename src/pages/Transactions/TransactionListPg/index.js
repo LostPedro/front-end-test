@@ -4,6 +4,7 @@ import moment from 'moment'
 import t from 'typy'
 import {TransactionListItemCp} from '../../../components/TransactionListItemCp'
 import {ButtonCp} from '../../../components/ButtonCp'
+import {LoadingCp} from '../../../components/LoadingCp'
 import {SETTINGS, IMAGES, KEYS} from '../../../settings'
 import {applyPriceMask, openErrorNotification} from '../../../utils'
 import {getTransactionList} from '../../../services'
@@ -38,7 +39,6 @@ class TransactionListPg extends React.Component {
   // Requests
   // -------------------------------------------------------------------------//
   getTransactionListRequest = async () => {
-    const {loading} = this.state
     const {setTransaction} = this.context
 
     this.setState({loading: true})
@@ -57,18 +57,14 @@ class TransactionListPg extends React.Component {
           count: t(response).safeArray.length
         }
         setTransaction(newTransaction)
-        this.setState(
-          {
-            loading: false
-          },
-          () => {
-            console.log(loading)
-          }
-        )
+        this.setState({
+          loading: false
+        })
       }
     } catch (e) {
-      openErrorNotification(t(e, 'error.message').safeString)
-      this.setState({loading: false})
+      this.setState({loading: false}, () => {
+        openErrorNotification(t(e, 'error.message').safeString)
+      })
     }
   }
   // -------------------------------------------------------------------------//
@@ -153,8 +149,10 @@ class TransactionListPg extends React.Component {
   }
 
   render() {
+    const {loading} = this.state
     return (
       <div className={this._pageName}>
+        <LoadingCp visible={loading} />
         {this.renderHeader()}
         <div className={`${this._pageName}-line`} />
         {this.renderList()}

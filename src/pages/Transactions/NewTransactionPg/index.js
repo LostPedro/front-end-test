@@ -4,6 +4,7 @@ import {SETTINGS, IMAGES} from '../../../settings'
 import {openErrorNotification} from '../../../utils'
 import {NavHeaderCp} from '../../../components/NavHeaderCp'
 import {FormCp} from '../../../components/FormCp'
+import {LoadingCp} from '../../../components/LoadingCp'
 import {postTransaction} from '../../../services'
 import TransactionContext from '../../../context/transactionContext'
 
@@ -31,7 +32,6 @@ class NewTransactionPg extends React.Component {
   // Requests
   // -------------------------------------------------------------------------//
   postTransactionRequest = async (input) => {
-    const {loading} = this.state
     const {transaction, setTransaction} = this.context
     this.setState({loading: true})
 
@@ -58,14 +58,14 @@ class NewTransactionPg extends React.Component {
             loading: false
           },
           () => {
-            console.log('loading', loading)
             this.onClickGoBack()
           }
         )
       }
     } catch (e) {
-      openErrorNotification(t(e, 'error.message').safeString)
-      this.setState({loading: false})
+      this.setState({loading: false}, () => {
+        openErrorNotification(t(e, 'error.message').safeString)
+      })
     }
   }
 
@@ -89,8 +89,10 @@ class NewTransactionPg extends React.Component {
   // Render
   // -------------------------------------------------------------------------//
   render() {
+    const {loading} = this.state
     return (
       <div className={this._pageName}>
+        <LoadingCp visible={loading} />
         <NavHeaderCp
           title={SETTINGS.NewTransactionPg.title}
           onClickLeft={this.onClickGoBack}
