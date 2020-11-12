@@ -41,7 +41,6 @@ export const cpfValidate = (cpf) => {
 export const creditCardValidate = (value) => {
   const re = /\d{4}\s{1}\d{4}\s{1}\d{4}\s{1}\d{4}$/
 
-  console.log('test', re.test(String(value)))
   return re.test(String(value))
 }
 

@@ -42,7 +42,6 @@ export const FormCp = ({
   // Event Handlers
   // -------------------------------------------------------------------------//
   const sendForm = (input) => {
-    console.log('input', input)
     postRequest(input)
   }
 
