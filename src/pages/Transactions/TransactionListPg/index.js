@@ -1,11 +1,11 @@
 import React from 'react'
-import {message} from 'antd'
+
 import moment from 'moment'
 import t from 'typy'
 import {TransactionListItemCp} from '../../../components/TransactionListItemCp'
 import {ButtonCp} from '../../../components/ButtonCp'
 import {SETTINGS, IMAGES, KEYS} from '../../../settings'
-import {applyPriceMask} from '../../../utils'
+import {applyPriceMask, openErrorNotification} from '../../../utils'
 import {getTransactionList} from '../../../services'
 import TransactionContext from '../../../context/transactionContext'
 
@@ -67,7 +67,7 @@ class TransactionListPg extends React.Component {
         )
       }
     } catch (e) {
-      message.error(t(e, 'message').safeString)
+      openErrorNotification(t(e, 'error.message').safeString)
       this.setState({loading: false})
     }
   }
@@ -90,6 +90,7 @@ class TransactionListPg extends React.Component {
     const total = array.reduce((acc, curr) => acc + curr.amount, 0)
     return total
   }
+
   // -------------------------------------------------------------------------//
   // Render
   // -------------------------------------------------------------------------//

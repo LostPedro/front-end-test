@@ -1,7 +1,7 @@
 import React from 'react'
-import {message} from 'antd'
 import t from 'typy'
 import {SETTINGS, IMAGES} from '../../../settings'
+import {openErrorNotification} from '../../../utils'
 import {NavHeaderCp} from '../../../components/NavHeaderCp'
 import {FormCp} from '../../../components/FormCp'
 import {postTransaction} from '../../../services'
@@ -64,7 +64,7 @@ class NewTransactionPg extends React.Component {
         )
       }
     } catch (e) {
-      message.error(t(e, 'message').safeString)
+      openErrorNotification(t(e, 'error.message').safeString)
       this.setState({loading: false})
     }
   }
