@@ -8,7 +8,8 @@ class TransactionProvider extends Component {
     transaction: {
       list: [],
       totalAmount: 0,
-      count: 0
+      count: 0,
+      madeRequest: false
     }
   }
 

@@ -30,7 +30,12 @@ class TransactionListPg extends React.Component {
 
   componentDidMount() {
     const {transaction} = this.context
-    if (t(transaction, 'list').safeArray.length === 0) {
+    // Suggested Solution
+    // if (t(transaction, 'list').safeArray.length === 0) {
+    //   this.getTransactionListRequest()
+    // }
+
+    if (!t(transaction, 'madeRequest').safeBoolean) {
       this.getTransactionListRequest()
     }
   }
@@ -40,9 +45,11 @@ class TransactionListPg extends React.Component {
   // -------------------------------------------------------------------------//
   getTransactionListRequest = async () => {
     const {setTransaction} = this.context
+    let newTransaction = {
+      madeRequest: true
+    }
 
     this.setState({loading: true})
-
     try {
       const response = await getTransactionList()
       if (response) {
@@ -51,11 +58,13 @@ class TransactionListPg extends React.Component {
           totalTransactionValue = this.calculateTotalTransactionValue(response)
         }
 
-        const newTransaction = {
+        newTransaction = {
+          ...newTransaction,
           list: response,
           totalAmount: totalTransactionValue,
           count: t(response).safeArray.length
         }
+
         setTransaction(newTransaction)
         this.setState({
           loading: false
@@ -63,6 +72,7 @@ class TransactionListPg extends React.Component {
       }
     } catch (e) {
       this.setState({loading: false}, () => {
+        setTransaction(newTransaction)
         openErrorNotification(t(e).safeObject)
       })
     }

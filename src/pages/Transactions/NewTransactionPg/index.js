@@ -5,7 +5,7 @@ import {openErrorNotification} from '../../../utils'
 import {NavHeaderCp} from '../../../components/NavHeaderCp'
 import {FormCp} from '../../../components/FormCp'
 import {LoadingCp} from '../../../components/LoadingCp'
-import {postTransaction} from '../../../services'
+import {postTransaction, getTransactionList} from '../../../services'
 import TransactionContext from '../../../context/transactionContext'
 
 import './style.less'
@@ -26,11 +26,56 @@ class NewTransactionPg extends React.Component {
     }
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const {transaction} = this.context
+
+    if (!t(transaction, 'madeRequest').safeBoolean) {
+      this.getTransactionListRequest()
+    }
+  }
 
   // -------------------------------------------------------------------------//
   // Requests
   // -------------------------------------------------------------------------//
+
+  // -------------------------------------------------------------------------//
+  // Requests
+  // -------------------------------------------------------------------------//
+  getTransactionListRequest = async () => {
+    const {setTransaction} = this.context
+    let newTransaction = {
+      madeRequest: true
+    }
+
+    this.setState({loading: true})
+    try {
+      const response = await getTransactionList()
+      if (response) {
+        let totalTransactionValue = 0
+        if (t(response).safeArray.length > 0) {
+          totalTransactionValue = this.calculateTotalTransactionValue(response)
+        }
+
+        newTransaction = {
+          ...newTransaction,
+          list: response,
+          totalAmount: totalTransactionValue,
+          count: t(response).safeArray.length
+        }
+
+        setTransaction(newTransaction)
+        this.setState({
+          loading: false
+        })
+      }
+    } catch (e) {
+      this.setState({loading: false}, () => {
+        setTransaction(newTransaction)
+        openErrorNotification(t(e).safeObject)
+      })
+    }
+  }
+
   postTransactionRequest = async (input) => {
     const {transaction, setTransaction} = this.context
     this.setState({loading: true})
@@ -75,6 +120,9 @@ class NewTransactionPg extends React.Component {
   onClickGoBack = () => {
     const {history} = this.props
     history.goBack()
+    setTimeout(() => {
+      window.scrollTo(0, 0)
+    }, 250)
   }
 
   // -------------------------------------------------------------------------//
