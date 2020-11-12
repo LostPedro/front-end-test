@@ -39,7 +39,6 @@ class TransactionListPg extends React.Component {
   // Requests
   // -------------------------------------------------------------------------//
   getTransactionListRequest = async () => {
-    console.log('1')
     const {setTransaction} = this.context
     let newTransaction = {
       madeRequest: true
