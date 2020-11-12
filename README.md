@@ -18,7 +18,7 @@ Execute o comando `yarn`.
 
 ## Rodando a aplicação
 
-1. Renomeie o arquivo `db.example.json` para `db.json`;
+1. Renomeie o arquivo `db.example.json` localizado na pasta `server` para `db.json`;
 1. Execute `yarn server` para executar a API;
 1. Execute `yarn start` para rodar a aplicação React.
 
