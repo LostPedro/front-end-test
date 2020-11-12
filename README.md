@@ -5,7 +5,9 @@
 - [Sobre o desafio](./CHALLENGE.md)
 - [Requisitos](#requisitos)
 - [Instalação](#instalação)
+- [Rodando a aplicação](#rodando-a-aplicação)
 - [Comandos](#comandos)
+- [Estrutura de arquivos](#estrutura-de-arquivos)
 
 ## Requisitos
 
@@ -33,7 +35,7 @@ O produto deve ser construído na base provida aqui. Para conhecer os comandos d
   - Precisa que o arquivo `db.example.json` seja renomeado para `db.json`.
 - `yarn format`: altera a sintaxe dos arquivos para formatação do eslint
 
-## Estrutura de Arquivos
+## Estrutura de arquivos
 
 #### Estrutura de componentes
 

@@ -71,7 +71,7 @@
     "server": "json-server ./server/db.json --middlewares ./server/status-middleware.js",
     "lint": "eslint .",
     "lint-fix": "./node_modules/.bin/eslint --fix src/",
-    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md)\""
+    "format": "prettier --write \"**/*.+(js)\""
   },
   "husky": {
     "hooks": {
