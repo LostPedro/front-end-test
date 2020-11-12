@@ -124,11 +124,11 @@ class TransactionListPg extends React.Component {
 
   renderList = () => {
     const {transaction} = this.context
-
+    const transactionList = t(transaction, 'list').safeArray.reverse()
     const today = moment()
     return (
       <div className={`${this._pageName}-list`}>
-        {t(transaction, 'list').safeArray.map((item, i) => {
+        {transactionList.map((item, i) => {
           return (
             <React.Fragment key={String(i)}>
               <TransactionListItemCp
