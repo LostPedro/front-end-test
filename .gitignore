@@ -6,7 +6,7 @@
 .pnp.js
 
 # database
-./server/db.json
+/server/db.json
 
 # testing
 /coverage
