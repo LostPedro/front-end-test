@@ -12,3 +12,18 @@
   align-items: center;
   z-index: 2;
 }
+
+.@{componentName}-fade {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  opacity: 0;
+  transition: visibility 0s 1s, opacity 1s linear;
+}

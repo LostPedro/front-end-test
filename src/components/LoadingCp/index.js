@@ -31,15 +31,13 @@ export const LoadingCp = ({_componentName, visible, solid}) => {
 
   return (
     <>
-      {visible && (
-        <div
-          className={_componentName}
-          style={{
-            backgroundColor: solid ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 0.75)'
-          }}>
-          <Spin spinning size="large" />
-        </div>
-      )}
+      <div
+        className={visible ? _componentName : `${_componentName}-fade`}
+        style={{
+          backgroundColor: solid ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 0.75)'
+        }}>
+        <Spin spinning size="large" />
+      </div>
     </>
   )
 }
