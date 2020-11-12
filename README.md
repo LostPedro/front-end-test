@@ -82,18 +82,18 @@ Segue aqui uma representaçao da estrutura de arquivos do projeto dentro da past
 ├── serviceWorker.js
 ├── services
 │   ├── index.js
-│   ├── requestServices.js
-│   └── transactionServices.js
+│   ├── requestServices.js      -> Página onde acontece as requisições
+│   └── transactionServices.js  -> Página onde se monta as requisições
 ├── settings
-│   ├── images.js
+│   ├── images.js     -> Import e export das imagens da pasta Assets
 │   ├── index.js
-│   ├── keys.js
-│   ├── pt-br
-│   │   ├── components
+│   ├── keys.js       -> Export das rotas de navegação do sistema
+│   ├── pt-br         -> Arquivos com os textos em Pt-Br
+│   │   ├── components  -> Textos dos componentes
 │   │   │   ├── FormCp
 │   │   │   └── index.js
-│   │   ├── messages
-│   │   └── pages
+│   │   ├── messages    -> Textos das mensagens de alerta/erro
+│   │   └── pages       -> Textos das páginas
 │   │       ├── ManagerPg
 │   │       ├── NotFoundPg
 │   │       ├── Transactions
@@ -105,10 +105,10 @@ Segue aqui uma representaçao da estrutura de arquivos do projeto dentro da past
 ├── styles
 │   ├── globalStyle.less
 │   └── variables
-│       └── colors.less
+│       └── colors.less   -> Cores utilizadas na aplicação
 └── utils
-    ├── MaskUtil.js
-    ├── MessageUtil.js
-    ├── ValidationUtil.js
+    ├── MaskUtil.js         -> Funções de Máscara para textos
+    ├── MessageUtil.js      -> Funções que retornam mensagens no sistema
+    ├── ValidationUtil.js   -> Funções de Validações de textos
     └── index.js
 ```
