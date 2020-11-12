@@ -65,7 +65,7 @@ ButtonCp.defaultProps = {
   _componentName: 'button-component',
   disabled: false,
   shake: false,
-  buttonLabel: PropTypes.string,
+  buttonLabel: '',
   onClick: () => {},
   icon: <div />,
   type: 'button'

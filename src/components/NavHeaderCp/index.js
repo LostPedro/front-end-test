@@ -69,7 +69,7 @@ NavHeaderCp.propTypes = {
 
 NavHeaderCp.defaultProps = {
   _componentName: 'nav-header-component',
-  title: PropTypes.string,
+  title: '',
   onClickLeft: () => {},
   onClickRight: () => {},
   leftIcon: <div />,
