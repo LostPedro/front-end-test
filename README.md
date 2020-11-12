@@ -38,49 +38,113 @@ O produto deve ser construído na base provida aqui. Para conhecer os comandos d
 Segue aqui um breve resumo da estrutura basica de arquivos dentro da pasta `src`
 
 ```
-+-- src
-|   +-- assets
-|   |   +-- images
-|   |   |   +-- icons
-|   +-- components
-|   |   +-- NameCp
-|   |   |   +-- __tests__
-|   |   |   |   +-- NameCp.test.js
-|   |   |   +-- index.js
-|   |   |   +-- style.less
-|   +-- context
-|   +-- pages
-|   |   +-- NamePg
-|   |   |   +-- index.js
-|   |   |   +-- style.less
-|   |   +-- EtcPages
-|   |   |   +--  EtcPg
-|   |   |   |   +--  index.js
-|   |   |   |   +--  style.less
-|   +-- services
-|   |   +-- index.js
-|   |   +-- requestServices.js
-|   |   +-- transactionServices.js
-|   +-- settings
-|   |   +-- pt-br
-|   |   |   +--  components
-|   |   |   +--  messages
-|   |   |   +--  pages
-|   |   |   +--  index.js
-|   |   +-- images.js
-|   |   +-- index.js
-|   |   +-- keys.js
-|   |   +-- routes.js
-|   +-- styles
-|   |   +-- variables
-|   |   |   +--  colors.less
-|   |   +-- globalStyle.less
-|   +-- utils
-|   |   +-- MaskUtil.js
-|   |   +-- MessageUtil.js
-|   |   +-- ValidationUtil.js
-|   +-- .prettierrc.js
-|   +-- index.js
-|   +-- serviceWorker.js
-|   +-- setupTests.js
+├── assets
+│   └── images
+│       └── icons
+│           ├── backArrow.png
+│           ├── backArrow@2x.png
+│           ├── backArrow@3x.png
+│           ├── plus.png
+│           ├── plus@2x.png
+│           └── plus@3x.png
+├── components
+│   ├── ButtonCp
+│   │   ├── __tests__
+│   │   │   ├── ButtonCp.test.js
+│   │   │   └── __snapshots__
+│   │   │       └── ButtonCp.test.js.snap
+│   │   ├── index.js
+│   │   └── style.less
+│   ├── FormCp
+│   │   ├── __tests__
+│   │   │   ├── FormCp.test.js
+│   │   │   └── __snapshots__
+│   │   │       └── FormCp.test.js.snap
+│   │   ├── customHooks.js
+│   │   ├── index.js
+│   │   └── style.less
+│   ├── InputCp
+│   │   ├── __tests__
+│   │   │   ├── InputCp.test.js
+│   │   │   └── __snapshots__
+│   │   │       └── InputCp.test.js.snap
+│   │   ├── index.js
+│   │   └── style.less
+│   ├── LoadingCp
+│   │   ├── __tests__
+│   │   │   ├── LoadingCp.test.js
+│   │   │   └── __snapshots__
+│   │   │       └── LoadingCp.test.js.snap
+│   │   ├── index.js
+│   │   └── style.less
+│   ├── NavHeaderCp
+│   │   ├── __tests__
+│   │   │   ├── NavHeaderCp.test.js
+│   │   │   └── __snapshots__
+│   │   │       └── NavHeaderCp.test.js.snap
+│   │   ├── index.js
+│   │   └── style.less
+│   └── TransactionListItemCp
+│       ├── __tests__
+│       │   ├── TransactionListCp.test.js
+│       │   └── __snapshots__
+│       │       └── TransactionListCp.test.js.snap
+│       ├── index.js
+│       └── style.less
+├── context
+│   └── transactionContext.js
+├── index.js
+├── pages
+│   ├── ManagerPg
+│   │   ├── index.js
+│   │   └── style.less
+│   ├── NotFoundPg
+│   │   ├── index.js
+│   │   └── style.less
+│   └── Transactions
+│       ├── NewTransactionPg
+│       │   ├── index.js
+│       │   └── style.less
+│       └── TransactionListPg
+│           ├── index.js
+│           └── style.less
+├── serviceWorker.js
+├── services
+│   ├── index.js
+│   ├── requestServices.js
+│   └── transactionServices.js
+├── settings
+│   ├── images.js
+│   ├── index.js
+│   ├── keys.js
+│   ├── pt-br
+│   │   ├── components
+│   │   │   ├── FormCp
+│   │   │   │   └── index.js
+│   │   │   └── index.js
+│   │   ├── index.js
+│   │   ├── messages
+│   │   │   └── index.js
+│   │   └── pages
+│   │       ├── ManagerPg
+│   │       │   └── index.js
+│   │       ├── NotFoundPg
+│   │       │   └── index.js
+│   │       ├── Transactions
+│   │       │   ├── NewTransactionPg
+│   │       │   │   └── index.js
+│   │       │   └── TransactionListPg
+│   │       │       └── index.js
+│   │       └── index.js
+│   └── routes.js
+├── setupTests.js
+├── styles
+│   ├── globalStyle.less
+│   └── variables
+│       └── colors.less
+└── utils
+    ├── MaskUtil.js
+    ├── MessageUtil.js
+    ├── ValidationUtil.js
+    └── index.js
 ```
