@@ -28,7 +28,10 @@ class TransactionListPg extends React.Component {
   }
 
   componentDidMount() {
-    this.getTransactionListRequest()
+    const {transaction} = this.context
+    if (t(transaction, 'list').safeArray.length === 0) {
+      this.getTransactionListRequest()
+    }
   }
 
   // -------------------------------------------------------------------------//
@@ -97,12 +100,12 @@ class TransactionListPg extends React.Component {
       <div className={`${this._pageName}-header`}>
         {this.renderHeaderItem(
           SETTINGS.TransactionListPg.header.transactionLabel,
-          transaction.count
+          t(transaction, 'count').safeNumber
         )}
         {this.renderHeaderItem(
           SETTINGS.TransactionListPg.header.totalValueLabel,
           SETTINGS.TransactionListPg.currency(
-            applyPriceMask(transaction.totalAmount)
+            applyPriceMask(t(transaction, 'totalAmount').safeNumber)
           ),
           {marginTop: '24px'}
         )}
@@ -125,7 +128,7 @@ class TransactionListPg extends React.Component {
     const today = moment()
     return (
       <div className={`${this._pageName}-list`}>
-        {t(transaction.list).safeArray.map((item, i) => {
+        {t(transaction, 'list').safeArray.map((item, i) => {
           return (
             <React.Fragment key={String(i)}>
               <TransactionListItemCp

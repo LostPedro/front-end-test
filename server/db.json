@@ -88,6 +88,26 @@
       "amount": 2222,
       "status": "paid",
       "id": 9
+    },
+    {
+      "buyer_document": "20973155000",
+      "credit_card_holder_name": "Teste Numero dois",
+      "credit_card_number": "1234123412341234",
+      "credit_card_expiration_date": "0320",
+      "credit_card_cvv": "124",
+      "amount": 55,
+      "status": "refused",
+      "id": 10
+    },
+    {
+      "buyer_document": "98785342009",
+      "credit_card_holder_name": "Teste numero tres",
+      "credit_card_number": "1234123412341234",
+      "credit_card_expiration_date": "0320",
+      "credit_card_cvv": "123",
+      "amount": 12300,
+      "status": "paid",
+      "id": 11
     }
   ]
 }

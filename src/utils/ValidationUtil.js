@@ -62,6 +62,6 @@ export const expireDateValidate = (value) => {
 }
 
 export const cvvValidate = (value) => {
-  const re = /^[0-9]{3,4}$/
+  const re = /^[0-9]{3}$/
   return re.test(String(value))
 }

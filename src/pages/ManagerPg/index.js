@@ -4,6 +4,7 @@ import {KEYS} from '../../settings'
 import {TransactionProvider} from '../../context/transactionContext'
 import './style.less'
 
+import NotFoundPg from '../NotFoundPg'
 import TransactionsListPg from '../Transactions/TransactionListPg'
 import NewTransactionPg from '../Transactions/NewTransactionPg'
 
@@ -77,6 +78,7 @@ class ManagerPg extends React.Component {
                 path={KEYS.pageKeys.newTransaction}
                 component={NewTransactionPg}
               />
+              <Route component={NotFoundPg} />
             </Switch>
           </div>
         </TransactionProvider>
