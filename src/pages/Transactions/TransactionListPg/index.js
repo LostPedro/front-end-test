@@ -63,7 +63,7 @@ class TransactionListPg extends React.Component {
       }
     } catch (e) {
       this.setState({loading: false}, () => {
-        openErrorNotification(t(e, 'error.message').safeString)
+        openErrorNotification(t(e).safeObject)
       })
     }
   }

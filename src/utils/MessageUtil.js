@@ -4,7 +4,10 @@ import 'antd/dist/antd.css'
 import {SETTINGS} from '../settings'
 
 export const errorTreatment = (e) => {
-  const error = e.replace(/\s/g, '')
+  if (t(e, 'error.response.status').safeNumber) {
+    return t(e, 'error.response.status').safeNumber
+  }
+  const error = t(e, 'error.message').safeString.replace(/\s/g, '')
 
   return error.charAt(0).toLowerCase() + error.slice(1)
 }
