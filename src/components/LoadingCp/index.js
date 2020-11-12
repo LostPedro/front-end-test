@@ -34,7 +34,6 @@ export const LoadingCp = ({_componentName, visible, solid}) => {
       {visible && (
         <div
           className={_componentName}
-          visible={visible}
           style={{
             backgroundColor: solid ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 0.75)'
           }}>
