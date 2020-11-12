@@ -1,6 +1,6 @@
 import React from 'react'
-
-import moment from 'moment'
+// When date is added to project request response -> Uncomment line bellow
+// import moment from 'moment'
 import t from 'typy'
 import {TransactionListItemCp} from '../../../components/TransactionListItemCp'
 import {ButtonCp} from '../../../components/ButtonCp'
@@ -30,11 +30,6 @@ class TransactionListPg extends React.Component {
 
   componentDidMount() {
     const {transaction} = this.context
-    // Suggested Solution
-    // if (t(transaction, 'list').safeArray.length === 0) {
-    //   this.getTransactionListRequest()
-    // }
-
     if (!t(transaction, 'madeRequest').safeBoolean) {
       this.getTransactionListRequest()
     }
@@ -44,6 +39,7 @@ class TransactionListPg extends React.Component {
   // Requests
   // -------------------------------------------------------------------------//
   getTransactionListRequest = async () => {
+    console.log('1')
     const {setTransaction} = this.context
     let newTransaction = {
       madeRequest: true
@@ -131,8 +127,7 @@ class TransactionListPg extends React.Component {
 
   renderList = () => {
     const {transaction} = this.context
-    const transactionList = t(transaction, 'list').safeArray.reverse()
-    const today = moment()
+    const transactionList = t(transaction, 'list').safeArray
     return (
       <div className={`${this._pageName}-list`}>
         {transactionList.map((item, i) => {
@@ -140,7 +135,9 @@ class TransactionListPg extends React.Component {
             <React.Fragment key={String(i)}>
               <TransactionListItemCp
                 name={t(item, 'credit_card_holder_name').safeString}
-                date={moment(today).format('DD/MM/YYYY  HH:mm')}
+                date="-"
+                // When date is added to project request response -> Uncomment line bellow
+                // date={moment(item.created_at).format('DD/MM/YYYY  HH:mm')}
                 moneyAmount={SETTINGS.TransactionListPg.currency(
                   applyPriceMask(t(item, 'amount').safeNumber)
                 )}

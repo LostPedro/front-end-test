@@ -92,6 +92,7 @@ class NewTransactionPg extends React.Component {
         )
 
         const newTransaction = {
+          ...transaction,
           list: transactionListArray,
           totalAmount: totalTransactionValue,
           count: t(transactionListArray).safeArray.length
@@ -103,7 +104,9 @@ class NewTransactionPg extends React.Component {
             loading: false
           },
           () => {
-            this.onClickGoBack()
+            setTimeout(() => {
+              this.onClickGoBack()
+            }, 500)
           }
         )
       }
