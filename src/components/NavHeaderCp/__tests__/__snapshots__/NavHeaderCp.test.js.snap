@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should take a snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="nav-header-component"
+  >
+    <div
+      aria-hidden="true"
+      class="nav-header-component-nav-icon-wrapper"
+      role="button"
+    >
+      <div />
+    </div>
+    <span
+      class="nav-header-component-nav-header-title"
+    />
+    <div
+      aria-hidden="true"
+      class="nav-header-component-nav-icon-wrapper"
+      role="button"
+    >
+      <div />
+    </div>
+  </div>
+</DocumentFragment>
+`;

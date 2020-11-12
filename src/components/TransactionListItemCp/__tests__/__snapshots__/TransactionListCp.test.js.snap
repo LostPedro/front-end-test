@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should take a snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="transaction-list-item-component"
+  >
+    <div
+      class="transaction-list-item-component-item-text-line"
+    >
+      <span
+        class="transaction-list-item-component-name"
+      />
+      <span
+        class="transaction-list-item-component-status"
+      />
+    </div>
+    <div
+      class="transaction-list-item-component-item-text-line"
+      style="margin-top: 8px;"
+    >
+      <span
+        class="transaction-list-item-component-date"
+      />
+      <span
+        class="transaction-list-item-component-money-amount"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
