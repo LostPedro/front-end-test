@@ -120,9 +120,6 @@ class NewTransactionPg extends React.Component {
   onClickGoBack = () => {
     const {history} = this.props
     history.goBack()
-    setTimeout(() => {
-      window.scrollTo(0, 0)
-    }, 250)
   }
 
   // -------------------------------------------------------------------------//
